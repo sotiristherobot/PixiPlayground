@@ -6,7 +6,7 @@
 var gulp = require('gulp');
 
 var browserSync = require('browser-sync');
-var reload = browserSync.reload;
+
 
 gulp.task('browser-sync', function () {
 
@@ -20,13 +20,15 @@ gulp.task('browser-sync', function () {
 
 gulp.task('html', function () {
    gulp.src('./*.html')
-       .pipe(gulp.dest('./dist/'));
+       .pipe(gulp.dest('./dist/'))
+       .pipe(browserSync.reload({stream:true}));
 });
 
 
 gulp.task('js', function () {
     gulp.src('./scripts/*.js')
-        .pipe(gulp.dest('./dist/scripts/'));
+        .pipe(gulp.dest('./dist/scripts/'))
+        .pipe(browserSync.reload({stream:true}));
 
 });
 
@@ -36,10 +38,10 @@ gulp.task('watch', function () {
     gulp.watch('./*.html',['html']);
     gulp.watch('./scripts/*.js',['js']);
 
-    gulp.watch([
-        './*.html',
-        '/scripts/*.js'
-    ]).on('change', reload);
+    // gulp.watch([
+    //     './*.html',
+    //     './scripts/*.js'
+    // ]).on('change', reload);
 
 
 });
