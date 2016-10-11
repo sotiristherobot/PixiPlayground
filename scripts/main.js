@@ -36,9 +36,12 @@
 
     stage.addChild(spriteCircle);
 
-    renderer.render(stage);
+    update();
 
 
+    function update(){
+        renderer.render(stage);
+    }
 }());
 
 
