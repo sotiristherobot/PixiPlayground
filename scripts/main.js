@@ -25,9 +25,22 @@
     circle.drawCircle(100,100,32);
     circle.endFill();
 
-    stage.addChild(circle);
 
-    
+
+    //make circle interactive
+    var texturedCircle = circle.generateTexture();
+    var spriteCircle = new PIXI.Sprite(texturedCircle);
+
+    spriteCircle.interactive = true;
+    spriteCircle.buttonMode = true;
+
+
+    spriteCircle.click = function(mouseData){
+        console.log("I'm a circle and I'm clicked");
+    };
+
+    stage.addChild(spriteCircle);
+
     renderer.render(stage);
 
 
